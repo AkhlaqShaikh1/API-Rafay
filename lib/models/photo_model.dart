@@ -16,7 +16,7 @@ class Photos {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['albumId'] = albumId;
     data['id'] = id;
     data['title'] = title;
@@ -24,4 +24,13 @@ class Photos {
     data['thumbnailUrl'] = thumbnailUrl;
     return data;
   }
+
+  static List<Photos> fromJsonList(List<dynamic> jsonlist) {
+    for (var photo in jsonlist) {
+      photos.add(Photos.fromJson(photo));
+    }
+    return photos;
+  }
 }
+
+List<Photos> photos = [];
